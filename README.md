@@ -1,7 +1,8 @@
 # neonman63_platform
 neonman63 Platform repository
 
-# Выполнено ДЗ №1
+<details>
+<summary># Выполнено ДЗ урока №2</summary>
 
  - [x] Основное ДЗ
  - [x] Разберитесь почему все pod в namespace kube-system восстановились после удаления
@@ -82,3 +83,48 @@ main.main()
 
 ## PR checklist:
  - [x] Выставлен label с темой домашнего задания
+</details>
+
+<details>
+<summary># Выполнено ДЗ урок №3</summary>
+
+- Запустил локальный кластер 3 control-plane + 3 worker с помощью kind
+
+## ReplicaSet
+
+- Добавил важную секцию в frontend-replicaset.yaml
+- Добавил env
+- Увеличил количество реплик до 3
+- Проверил возможность обновления приложения с помощью rs:
+ReplicaSet управляет только количеством запущенных экземпляров приложения, а не их версией и обновлением. За обновление
+отвечает Deployment
+
+## Deployment
+
+- Создал манифест paymentservice-replicaset.yaml
+- Собрал 2 версии докер образов для paymentservice
+- Создал paymentservice-deployment.yaml копированием replicaset-манифеста с исправлением kind на Deployment
+- Проверил обновление приложения с одной версии на другую
+- Проверил механизм отката на предыдущую версию
+
+## Deployment *
+
+- Создал два манифеста для BlueGreen и Reverse RollingUpdate
+- Проверил их работу
+
+## Probes
+
+- Создал манифест frontend-deployment.yaml
+- Добавил секцию readinessProbe
+- Проверил некорректную работу probe путём замены probe url на невалидный
+- Попробовал механизм отката на старую версию, в случае неуспешного деплоя
+
+## DaemonSet
+
+- Нашел, исправил и успешно применил манифест node-exporter-daemonset.yaml
+- Проверил работоспособность с помощью curl localhost:9100/metrics
+
+## DaemonSet **
+
+- Исправил манифест таким образом, чтобы node-exporter запускался и на master
+</details>
