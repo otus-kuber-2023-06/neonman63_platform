@@ -14,7 +14,13 @@ spec:
           mountPath: /app
   containers:
     - name: web
-      image: docker.io/neonman/otus:kubernetes-intro
+      image: neonman/otus:kubernetes-intro-8000
+      readinessProbe:
+        httpGet:
+          path: /index.html
+          port: 80
+      livenessProbe:
+        tcpSocket: { port: 8000 }
       volumeMounts:
         - name: app
           mountPath: /app
